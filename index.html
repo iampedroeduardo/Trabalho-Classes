@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalho</title>
+</head>
+<body>
+    <style>
+        p{
+            margin: 2px;
+        }
+    </style>
+    <script>
+        class pessoa{
+            nome;
+            cpf;
+            constructor(cpf,nome){
+                this.nome=nome;
+                this.cpf=cpf;
+            }
+        }
+        class professor extends pessoa{
+            area;
+            telefone;
+            constructor(nome,cpf,area,telefone){
+                super(cpf,nome);
+                this.area=area;
+                this.telefone=telefone;
+            }
+        }
+        class aluno extends pessoa{
+            matricula;
+            constructor(nome,cpf,matricula){
+                super(cpf,nome);
+                this.matricula=matricula;
+            }
+        }
+        class turma{
+            professor;
+            alunos;
+            identificacao;
+            constructor(professor,alunos,identificacao){
+                this.professor=professor;
+                this.alunos=alunos;
+                this.identificacao=identificacao;
+            }
+            imprimeDados(){
+                let div=document.createElement("div");
+                let titulo=document.createElement("h1");
+                titulo.innerHTML="Turma "+this.identificacao;
+                div.appendChild(titulo);
+                let br=document.createElement("br");
+                let titulo1=document.createElement("h2");
+                titulo1.innerHTML="Professor:";
+                div.appendChild(titulo1);
+                let nome=document.createElement("p");
+                nome.innerHTML="Nome: "+this.professor.nome;
+                div.appendChild(nome);
+                let cpf=document.createElement("p");
+                cpf.innerHTML="CPF: "+this.professor.cpf;
+                div.appendChild(cpf);
+                let telefone=document.createElement("p");
+                telefone.innerHTML="Telefone: "+this.professor.telefone;
+                div.appendChild(telefone);
+                let area=document.createElement("p");
+                area.innerHTML="Área: "+this.professor.area;
+                div.appendChild(area);
+                let titulo2=document.createElement("h2");
+                titulo2.innerHTML="Alunos:"
+                div.appendChild(titulo2);
+                for(let i=0;i<this.alunos.length;i++){
+                    let nomealuno=document.createElement("p");
+                    nomealuno.innerHTML="Nome: "+this.alunos[i].nome;
+                    div.appendChild(nomealuno);
+                    let cpfaluno=document.createElement("p");
+                    cpfaluno.innerHTML="CPF: "+this.alunos[i].cpf;
+                    div.appendChild(cpfaluno);
+                    let matricula=document.createElement("p");
+                    matricula.innerHTML="Matrícula: "+this.alunos[i].matricula;
+                    div.appendChild(matricula);
+                    let br2=document.createElement("br");
+                    div.appendChild(br2);
+                }
+                document.body.appendChild(div);
+            }
+        }
+        let professor1=new professor("João","12345678900","Matemática","(53)999123456");
+        let professor2=new professor("André","12345678911","História","(53)981123456");
+        let aluno1=new aluno("Pedro","11122233344","2022300001");
+        let aluno2=new aluno("Julia","11122233355","2022300002");
+        let aluno3=new aluno("Guilherme","11122233366","2022300003");
+        let aluno4=new aluno("Mauro","11122233377","2022300004");
+        let aluno5=new aluno("Greice","11122233388","2022300005");
+        let aluno6=new aluno("Rafael","11122233399","2022300006");
+        let turma1=new turma(professor1,[aluno1,aluno2,aluno3,aluno4],"2C");
+        let turma2=new turma(professor2,[aluno3,aluno4,aluno5,aluno6],"3C");
+        turma1.imprimeDados();
+        turma2.imprimeDados();
+    </script>
+</body>
+</html>
